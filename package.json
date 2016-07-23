@@ -1,0 +1,43 @@
+{
+  "name": "'blog'",
+  "version": "1.0.0",
+  "description": "'blog'",
+  "main": "enter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nighthere/MyBlog.git"
+  },
+  "keywords": [
+    "qaz2086s."
+  ],
+  "author": "'me'",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nighthere/MyBlog/issues"
+  },
+  "homepage": "https://github.com/nighthere/MyBlog#readme",
+  "devDependencies": {
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "autoprefixer": "^6.3.6",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.19.0",
+    "json-loader": "^0.5.4",
+    "ng-annotate-loader": "^0.1.0",
+    "postcss-loader": "^0.9.1",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
