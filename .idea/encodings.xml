@@ -3,9 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/dist/favicon.ico" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/enter.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/favicon.ico" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/favicon.ico" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/js/enter.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/js/hello.js" charset="UTF-8" />
   </component>
 </project>

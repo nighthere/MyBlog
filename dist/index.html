@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
     <meta charset="UTF-8">
     <title>My Blog</title>
-<link rel="shortcut icon" href="favicon.ico"></head>
-<body>
-    <div>简单的博客系统</div>
-<script type="text/javascript" src="js/lib/commons.js?9d812c535486b3c4762a"></script><script type="text/javascript" src="js/build.js?9d812c535486b3c4762a"></script></body>
+<link rel="shortcut icon" href="favicon.ico"><link href="css/index.css?34eb917f4ae5ed48e406" rel="stylesheet"></head>
+<body ng-app="routerApp">
+    <div class="imgContainer"></div>
+    <div class="navContainer">
+        <nav class="nav">
+            <a href="#/main"> 首页</a>
+            <a href="#/a">a</a>
+            <a ui-sref="b">b</a>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div >
+            <div ui-view></div>
+        </div>
+    </div>
+<script type="text/javascript" src="js/lib/commons.js?34eb917f4ae5ed48e406"></script><script type="text/javascript" src="js/build.js?34eb917f4ae5ed48e406"></script></body>
 </html>

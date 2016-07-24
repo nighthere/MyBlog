@@ -10,7 +10,7 @@ var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 
 module.exports = {
     entry:{
-        index:['./src/index.html'],
+        index:['./src/enter.js'],
         commons:['jquery','angular','angular-ui-router'],
     },
     output:{
@@ -29,7 +29,7 @@ module.exports = {
                 loader: ExtractTextPlugin.extract(
                     "style-loader", "css-loader!postcss-loader", { publicPath: "../" })
             }, {
-                test: /\.(jpg|png|gif)$/,
+                test: /\.(jpg|png|gif|jpeg)$/,
                 loader: "url-loader?limit=10000&name=images/[name].[ext]"
             }, {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
