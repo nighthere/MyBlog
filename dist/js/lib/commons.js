@@ -7298,7 +7298,7 @@
 		return ( fxNow = jQuery.now() );
 	}
 
-	// Generate parameters to create a standard animation
+	// Generate parameters to create a standard game
 	function genFx( type, includeWidth ) {
 		var which,
 			i = 0,
@@ -7455,7 +7455,7 @@
 		propTween = false;
 		for ( prop in orig ) {
 
-			// General show/hide setup for this element animation
+			// General show/hide setup for this element game
 			if ( !propTween ) {
 				if ( dataShow ) {
 					if ( "hidden" in dataShow ) {
@@ -7481,7 +7481,7 @@
 
 				/* eslint-enable no-loop-func */
 
-					// The final step of a "hide" animation is actually hiding the element
+					// The final step of a "hide" game is actually hiding the element
 					if ( !hidden ) {
 						showHide( [ elem ] );
 					}
@@ -12932,25 +12932,25 @@
 	           * @ngdoc method
 	           * @name angular.Module#animation
 	           * @module ng
-	           * @param {string} name animation name
+	           * @param {string} name game name
 	           * @param {Function} animationFactory Factory function for creating new instance of an
-	           *                                    animation.
+	           *                                    game.
 	           * @description
 	           *
 	           * **NOTE**: animations take effect only if the **ngAnimate** module is loaded.
 	           *
 	           *
-	           * Defines an animation hook that can be later used with
+	           * Defines an game hook that can be later used with
 	           * {@link $animate $animate} service and directives that use this service.
 	           *
 	           * ```js
-	           * module.animation('.animation-name', function($inject1, $inject2) {
+	           * module.game('.game-name', function($inject1, $inject2) {
 	           *   return {
 	           *     eventName : function(element, done) {
-	           *       //code to run the animation
+	           *       //code to run the game
 	           *       //once complete, then run done()
 	           *       return function cancellationFunction(element) {
-	           *         //code to cancel the animation
+	           *         //code to cancel the game
 	           *       }
 	           *     }
 	           *   }
@@ -15795,7 +15795,7 @@
 	}
 
 	// if any other type of options value besides an Object value is
-	// passed into the $animate.method() animation then this helper code
+	// passed into the $animate.method() game then this helper code
 	// will be run which will ignore it. While this patch is not the
 	// greatest solution to this, a lot of existing plugins depend on
 	// $animate to either call the callback (< 1.2) or return a promise
@@ -15839,7 +15839,7 @@
 	        var runner = new $$AnimateRunner(); // jshint ignore:line
 
 	        // since there are no animations to run the runner needs to be
-	        // notified that the animation call is complete.
+	        // notified that the game call is complete.
 	        runner.complete();
 	        return runner;
 	      }
@@ -15931,14 +15931,14 @@
 	   * @name $animateProvider#register
 	   *
 	   * @description
-	   * Registers a new injectable animation factory function. The factory function produces the
-	   * animation object which contains callback functions for each event that is expected to be
+	   * Registers a new injectable game factory function. The factory function produces the
+	   * game object which contains callback functions for each event that is expected to be
 	   * animated.
 	   *
 	   *   * `eventFn`: `function(element, ... , doneFunction, options)`
-	   *   The element to animate, the `doneFunction` and the options fed into the animation. Depending
-	   *   on the type of animation additional arguments will be injected into the animation function. The
-	   *   list below explains the function signatures for the different animation methods:
+	   *   The element to animate, the `doneFunction` and the options fed into the game. Depending
+	   *   on the type of game additional arguments will be injected into the game function. The
+	   *   list below explains the function signatures for the different game methods:
 	   *
 	   *   - setClass: function(element, addedClasses, removedClasses, doneFunction, options)
 	   *   - addClass: function(element, addedClasses, doneFunction, options)
@@ -15946,23 +15946,23 @@
 	   *   - enter, leave, move: function(element, doneFunction, options)
 	   *   - animate: function(element, fromStyles, toStyles, doneFunction, options)
 	   *
-	   *   Make sure to trigger the `doneFunction` once the animation is fully complete.
+	   *   Make sure to trigger the `doneFunction` once the game is fully complete.
 	   *
 	   * ```js
 	   *   return {
 	   *     //enter, leave, move signature
 	   *     eventFn : function(element, done, options) {
-	   *       //code to run the animation
+	   *       //code to run the game
 	   *       //once complete, then run done()
 	   *       return function endFunction(wasCancelled) {
-	   *         //code to cancel the animation
+	   *         //code to cancel the game
 	   *       }
 	   *     }
 	   *   }
 	   * ```
 	   *
-	   * @param {string} name The name of the animation (this is what the class-based CSS value will be compared to).
-	   * @param {Function} factory The factory function that will be executed to return the animation
+	   * @param {string} name The name of the game (this is what the class-based CSS value will be compared to).
+	   * @param {Function} factory The factory function that will be executed to return the game
 	   *                           object.
 	   */
 	  this.register = function(name, factory) {
@@ -15970,7 +15970,7 @@
 	      throw $animateMinErr('notcsel', "Expecting class selector starting with '.' got '{0}'.", name);
 	    }
 
-	    var key = name + '-animation';
+	    var key = name + '-game';
 	    provider.$$registeredAnimations[name.substr(1)] = key;
 	    $provide.factory(key, factory);
 	  };
@@ -15981,8 +15981,8 @@
 	   *
 	   * @description
 	   * Sets and/or returns the CSS class regular expression that is checked when performing
-	   * an animation. Upon bootstrap the classNameFilter value is not set at all and will
-	   * therefore enable $animate to attempt to perform an animation on any element that is triggered.
+	   * an game. Upon bootstrap the classNameFilter value is not set at all and will
+	   * therefore enable $animate to attempt to perform an game on any element that is triggered.
 	   * When setting the `classNameFilter` value, animations will only be performed on elements
 	   * that successfully match the filter expression. This in turn can boost performance
 	   * for low-powered devices as well as applications containing a lot of structural operations.
@@ -16021,19 +16021,19 @@
 	     * @ngdoc service
 	     * @name $animate
 	     * @description The $animate service exposes a series of DOM utility methods that provide support
-	     * for animation hooks. The default behavior is the application of DOM operations, however,
-	     * when an animation is detected (and animations are enabled), $animate will do the heavy lifting
-	     * to ensure that animation runs with the triggered DOM operation.
+	     * for game hooks. The default behavior is the application of DOM operations, however,
+	     * when an game is detected (and animations are enabled), $animate will do the heavy lifting
+	     * to ensure that game runs with the triggered DOM operation.
 	     *
 	     * By default $animate doesn't trigger any animations. This is because the `ngAnimate` module isn't
-	     * included and only when it is active then the animation hooks that `$animate` triggers will be
+	     * included and only when it is active then the game hooks that `$animate` triggers will be
 	     * functional. Once active then all structural `ng-` directives will trigger animations as they perform
 	     * their DOM-related operations (enter, leave and move). Other directives such as `ngClass`,
 	     * `ngShow`, `ngHide` and `ngMessages` also provide support for animations.
 	     *
 	     * It is recommended that the`$animate` service is always used when executing DOM-related procedures within directives.
 	     *
-	     * To learn more about enabling animation support, click here to visit the
+	     * To learn more about enabling game support, click here to visit the
 	     * {@link ngAnimate ngAnimate module page}.
 	     */
 	    return {
@@ -16045,26 +16045,26 @@
 	       * @ngdoc method
 	       * @name $animate#on
 	       * @kind function
-	       * @description Sets up an event listener to fire whenever the animation event (enter, leave, move, etc...)
+	       * @description Sets up an event listener to fire whenever the game event (enter, leave, move, etc...)
 	       *    has fired on the given element or among any of its children. Once the listener is fired, the provided callback
 	       *    is fired with the following params:
 	       *
 	       * ```js
 	       * $animate.on('enter', container,
 	       *    function callback(element, phase) {
-	       *      // cool we detected an enter animation within the container
+	       *      // cool we detected an enter game within the container
 	       *    }
 	       * );
 	       * ```
 	       *
-	       * @param {string} event the animation event that will be captured (e.g. enter, leave, move, addClass, removeClass, etc...)
-	       * @param {DOMElement} container the container element that will capture each of the animation events that are fired on itself
+	       * @param {string} event the game event that will be captured (e.g. enter, leave, move, addClass, removeClass, etc...)
+	       * @param {DOMElement} container the container element that will capture each of the game events that are fired on itself
 	       *     as well as among its children
 	       * @param {Function} callback the callback function that will be fired when the listener is triggered
 	       *
 	       * The arguments present in the callback function are:
-	       * * `element` - The captured DOM element that the animation was fired on.
-	       * * `phase` - The phase of the animation. The two possible phases are **start** (when the animation starts) and **close** (when it ends).
+	       * * `element` - The captured DOM element that the game was fired on.
+	       * * `phase` - The phase of the game. The two possible phases are **start** (when the game starts) and **close** (when it ends).
 	       */
 	      on: $$animateQueue.on,
 
@@ -16077,13 +16077,13 @@
 	       * can be used in three different ways depending on the arguments:
 	       *
 	       * ```js
-	       * // remove all the animation event listeners listening for `enter`
+	       * // remove all the game event listeners listening for `enter`
 	       * $animate.off('enter');
 	       *
-	       * // remove listeners for all animation events from the container element
+	       * // remove listeners for all game events from the container element
 	       * $animate.off(container);
 	       *
-	       * // remove all the animation event listeners listening for `enter` on the given element and its children
+	       * // remove all the game event listeners listening for `enter` on the given element and its children
 	       * $animate.off('enter', container);
 	       *
 	       * // remove the event listener function provided by `callback` that is set
@@ -16091,7 +16091,7 @@
 	       * $animate.off('enter', container, callback);
 	       * ```
 	       *
-	       * @param {string|DOMElement} event|container the animation event (e.g. enter, leave, move,
+	       * @param {string|DOMElement} event|container the game event (e.g. enter, leave, move,
 	       * addClass, removeClass, etc...), or the container element. If it is the element, all other
 	       * arguments are ignored.
 	       * @param {DOMElement=} container the container element the event listener was placed on
@@ -16104,7 +16104,7 @@
 	       * @name $animate#pin
 	       * @kind function
 	       * @description Associates the provided element with a host parent element to allow the element to be animated even if it exists
-	       *    outside of the DOM structure of the Angular application. By doing so, any animation triggered via `$animate` can be issued on the
+	       *    outside of the DOM structure of the Angular application. By doing so, any game triggered via `$animate` can be issued on the
 	       *    element despite being outside the realm of the application or within another application. Say for example if the application
 	       *    was bootstrapped on an element that is somewhere inside of the `<body>` tag, but we wanted to allow for an element to be situated
 	       *    as a direct child of `document.body`, then this can be achieved by pinning the element via `$animate.pin(element)`. Keep in mind
@@ -16152,9 +16152,9 @@
 	       * @ngdoc method
 	       * @name $animate#cancel
 	       * @kind function
-	       * @description Cancels the provided animation.
+	       * @description Cancels the provided game.
 	       *
-	       * @param {Promise} animationPromise The animation promise that is returned when an animation is started.
+	       * @param {Promise} animationPromise The game promise that is returned when an game is started.
 	       */
 	      cancel: function(runner) {
 	        runner.end && runner.end();
@@ -16166,8 +16166,8 @@
 	       * @name $animate#enter
 	       * @kind function
 	       * @description Inserts the element into the DOM either after the `after` element (if provided) or
-	       *   as the first child within the `parent` element and then triggers an animation.
-	       *   A promise is returned that will be resolved during the next digest once the animation
+	       *   as the first child within the `parent` element and then triggers an game.
+	       *   A promise is returned that will be resolved during the next digest once the game
 	       *   has completed.
 	       *
 	       * @param {DOMElement} element the element which will be inserted into the DOM
@@ -16178,11 +16178,11 @@
 	       *   The object can have the following properties:
 	       *
 	       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-	       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
+	       *   - **from** - `{Object}` - CSS properties & values at the beginning of game. Must have matching `to`
 	       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-	       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+	       *   - **to** - `{Object}` - CSS properties & values at end of game. Must have matching `from`
 	       *
-	       * @return {Promise} the animation callback promise
+	       * @return {Promise} the game callback promise
 	       */
 	      enter: function(element, parent, after, options) {
 	        parent = parent && jqLite(parent);
@@ -16199,8 +16199,8 @@
 	       * @kind function
 	       * @description Inserts (moves) the element into its new position in the DOM either after
 	       *   the `after` element (if provided) or as the first child within the `parent` element
-	       *   and then triggers an animation. A promise is returned that will be resolved
-	       *   during the next digest once the animation has completed.
+	       *   and then triggers an game. A promise is returned that will be resolved
+	       *   during the next digest once the game has completed.
 	       *
 	       * @param {DOMElement} element the element which will be moved into the new DOM position
 	       * @param {DOMElement} parent the parent element which will append the element as
@@ -16210,11 +16210,11 @@
 	       *   The object can have the following properties:
 	       *
 	       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-	       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
+	       *   - **from** - `{Object}` - CSS properties & values at the beginning of game. Must have matching `to`
 	       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-	       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+	       *   - **to** - `{Object}` - CSS properties & values at end of game. Must have matching `from`
 	       *
-	       * @return {Promise} the animation callback promise
+	       * @return {Promise} the game callback promise
 	       */
 	      move: function(element, parent, after, options) {
 	        parent = parent && jqLite(parent);
@@ -16228,20 +16228,20 @@
 	       * @ngdoc method
 	       * @name $animate#leave
 	       * @kind function
-	       * @description Triggers an animation and then removes the element from the DOM.
+	       * @description Triggers an game and then removes the element from the DOM.
 	       * When the function is called a promise is returned that will be resolved during the next
-	       * digest once the animation has completed.
+	       * digest once the game has completed.
 	       *
 	       * @param {DOMElement} element the element which will be removed from the DOM
 	       * @param {object=} options an optional collection of options/styles that will be applied to the element.
 	       *   The object can have the following properties:
 	       *
 	       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-	       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
+	       *   - **from** - `{Object}` - CSS properties & values at the beginning of game. Must have matching `to`
 	       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-	       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+	       *   - **to** - `{Object}` - CSS properties & values at end of game. Must have matching `from`
 	       *
-	       * @return {Promise} the animation callback promise
+	       * @return {Promise} the game callback promise
 	       */
 	      leave: function(element, options) {
 	        return $$animateQueue.push(element, 'leave', prepareAnimateOptions(options), function() {
@@ -16254,9 +16254,9 @@
 	       * @name $animate#addClass
 	       * @kind function
 	       *
-	       * @description Triggers an addClass animation surrounding the addition of the provided CSS class(es). Upon
+	       * @description Triggers an addClass game surrounding the addition of the provided CSS class(es). Upon
 	       *   execution, the addClass operation will only be handled after the next digest and it will not trigger an
-	       *   animation if element already contains the CSS class or if the class is removed at a later step.
+	       *   game if element already contains the CSS class or if the class is removed at a later step.
 	       *   Note that class-based animations are treated differently compared to structural animations
 	       *   (like enter, move and leave) since the CSS classes may be added/removed at different points
 	       *   depending if CSS or JavaScript animations are used.
@@ -16267,11 +16267,11 @@
 	       *   The object can have the following properties:
 	       *
 	       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-	       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
+	       *   - **from** - `{Object}` - CSS properties & values at the beginning of game. Must have matching `to`
 	       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-	       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+	       *   - **to** - `{Object}` - CSS properties & values at end of game. Must have matching `from`
 	       *
-	       * @return {Promise} the animation callback promise
+	       * @return {Promise} the game callback promise
 	       */
 	      addClass: function(element, className, options) {
 	        options = prepareAnimateOptions(options);
@@ -16284,9 +16284,9 @@
 	       * @name $animate#removeClass
 	       * @kind function
 	       *
-	       * @description Triggers a removeClass animation surrounding the removal of the provided CSS class(es). Upon
+	       * @description Triggers a removeClass game surrounding the removal of the provided CSS class(es). Upon
 	       *   execution, the removeClass operation will only be handled after the next digest and it will not trigger an
-	       *   animation if element does not contain the CSS class or if the class is added at a later step.
+	       *   game if element does not contain the CSS class or if the class is added at a later step.
 	       *   Note that class-based animations are treated differently compared to structural animations
 	       *   (like enter, move and leave) since the CSS classes may be added/removed at different points
 	       *   depending if CSS or JavaScript animations are used.
@@ -16297,11 +16297,11 @@
 	       *   The object can have the following properties:
 	       *
 	       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-	       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
+	       *   - **from** - `{Object}` - CSS properties & values at the beginning of game. Must have matching `to`
 	       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-	       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+	       *   - **to** - `{Object}` - CSS properties & values at end of game. Must have matching `from`
 	       *
-	       * @return {Promise} the animation callback promise
+	       * @return {Promise} the game callback promise
 	       */
 	      removeClass: function(element, className, options) {
 	        options = prepareAnimateOptions(options);
@@ -16315,7 +16315,7 @@
 	       * @kind function
 	       *
 	       * @description Performs both the addition and removal of a CSS classes on an element and (during the process)
-	       *    triggers an animation surrounding the class addition/removal. Much like `$animate.addClass` and
+	       *    triggers an game surrounding the class addition/removal. Much like `$animate.addClass` and
 	       *    `$animate.removeClass`, `setClass` will only evaluate the classes being added/removed once a digest has
 	       *    passed. Note that class-based animations are treated differently compared to structural animations
 	       *    (like enter, move and leave) since the CSS classes may be added/removed at different points
@@ -16328,11 +16328,11 @@
 	       *   The object can have the following properties:
 	       *
 	       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-	       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
+	       *   - **from** - `{Object}` - CSS properties & values at the beginning of game. Must have matching `to`
 	       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-	       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+	       *   - **to** - `{Object}` - CSS properties & values at end of game. Must have matching `from`
 	       *
-	       * @return {Promise} the animation callback promise
+	       * @return {Promise} the game callback promise
 	       */
 	      setClass: function(element, add, remove, options) {
 	        options = prepareAnimateOptions(options);
@@ -16346,19 +16346,19 @@
 	       * @name $animate#animate
 	       * @kind function
 	       *
-	       * @description Performs an inline animation on the element which applies the provided to and from CSS styles to the element.
-	       * If any detected CSS transition, keyframe or JavaScript matches the provided className value, then the animation will take
-	       * on the provided styles. For example, if a transition animation is set for the given classNamem, then the provided `from` and
+	       * @description Performs an inline game on the element which applies the provided to and from CSS styles to the element.
+	       * If any detected CSS transition, keyframe or JavaScript matches the provided className value, then the game will take
+	       * on the provided styles. For example, if a transition game is set for the given classNamem, then the provided `from` and
 	       * `to` styles will be applied alongside the given transition. If the CSS style provided in `from` does not have a corresponding
-	       * style in `to`, the style in `from` is applied immediately, and no animation is run.
-	       * If a JavaScript animation is detected then the provided styles will be given in as function parameters into the `animate`
+	       * style in `to`, the style in `from` is applied immediately, and no game is run.
+	       * If a JavaScript game is detected then the provided styles will be given in as function parameters into the `animate`
 	       * method (or as part of the `options` parameter):
 	       *
 	       * ```js
-	       * ngModule.animation('.my-inline-animation', function() {
+	       * ngModule.game('.my-inline-game', function() {
 	       *   return {
 	       *     animate : function(element, from, to, done, options) {
-	       *       //animation
+	       *       //game
 	       *       done();
 	       *     }
 	       *   }
@@ -16366,20 +16366,20 @@
 	       * ```
 	       *
 	       * @param {DOMElement} element the element which the CSS styles will be applied to
-	       * @param {object} from the from (starting) CSS styles that will be applied to the element and across the animation.
-	       * @param {object} to the to (destination) CSS styles that will be applied to the element and across the animation.
-	       * @param {string=} className an optional CSS class that will be applied to the element for the duration of the animation. If
+	       * @param {object} from the from (starting) CSS styles that will be applied to the element and across the game.
+	       * @param {object} to the to (destination) CSS styles that will be applied to the element and across the game.
+	       * @param {string=} className an optional CSS class that will be applied to the element for the duration of the game. If
 	       *    this value is left as empty then a CSS class of `ng-inline-animate` will be applied to the element.
-	       *    (Note that if no animation is detected then this value will not be applied to the element.)
+	       *    (Note that if no game is detected then this value will not be applied to the element.)
 	       * @param {object=} options an optional collection of options/styles that will be applied to the element.
 	       *   The object can have the following properties:
 	       *
 	       *   - **addClass** - `{string}` - space-separated CSS classes to add to element
-	       *   - **from** - `{Object}` - CSS properties & values at the beginning of animation. Must have matching `to`
+	       *   - **from** - `{Object}` - CSS properties & values at the beginning of game. Must have matching `to`
 	       *   - **removeClass** - `{string}` - space-separated CSS classes to remove from element
-	       *   - **to** - `{Object}` - CSS properties & values at end of animation. Must have matching `from`
+	       *   - **to** - `{Object}` - CSS properties & values at end of game. Must have matching `from`
 	       *
-	       * @return {Promise} the animation callback promise
+	       * @return {Promise} the game callback promise
 	       */
 	      animate: function(element, from, to, className, options) {
 	        options = prepareAnimateOptions(options);
@@ -16593,7 +16593,7 @@
 	  this.$get = ['$$rAF', '$q', '$$AnimateRunner', function($$rAF, $q, $$AnimateRunner) {
 
 	    return function(element, initialOptions) {
-	      // all of the animation functions should create
+	      // all of the game functions should create
 	      // a copy of the options data, however, if a
 	      // parent service has already created a copy then
 	      // we should stick to using that
@@ -16603,7 +16603,7 @@
 	      }
 
 	      // there is no point in applying the styles since
-	      // there is no animation that goes on at all in
+	      // there is no game that goes on at all in
 	      // this version of $animateCss.
 	      if (options.cleanupStyles) {
 	        options.from = options.to = null;
@@ -18887,7 +18887,7 @@
 	       *
 	       * @description
 	       * Adds the CSS class value specified by the classVal parameter to the element. If animations
-	       * are enabled then an animation will be triggered for the class addition.
+	       * are enabled then an game will be triggered for the class addition.
 	       *
 	       * @param {string} classVal The className value that will be added to the element
 	       */
@@ -18904,7 +18904,7 @@
 	       *
 	       * @description
 	       * Removes the CSS class value specified by the classVal parameter from the element. If
-	       * animations are enabled then an animation will be triggered for the class removal.
+	       * animations are enabled then an game will be triggered for the class removal.
 	       *
 	       * @param {string} classVal The className value that will be removed from the element
 	       */
@@ -20563,7 +20563,7 @@
 	                (attr.$$observers && attr.$$observers[name].$$scope || scope).
 	                  $watch(interpolateFn, function interpolateFnWatchAction(newValue, oldValue) {
 	                    //special case for class attribute addition + removal
-	                    //so that class changes can tap into the animation
+	                    //so that class changes can tap into the game
 	                    //hooks provided by the $animate service. Be sure to
 	                    //skip animations when the first digest occurs (when
 	                    //both the new and the old values are the same) since
@@ -21208,9 +21208,9 @@
 	  this.$get = ['$document', function($document) {
 	    return function(domNode) {
 	      //the line below will force the browser to perform a repaint so
-	      //that all the animated elements within the animation frame will
+	      //that all the animated elements within the game frame will
 	      //be properly updated and drawn on screen. This is required to
-	      //ensure that the preparation animation is properly flushed so that
+	      //ensure that the preparation game is properly flushed so that
 	      //the active state picks up from there. DO NOT REMOVE THIS LINE.
 	      //DO NOT OPTIMIZE THIS LINE. THE MINIFIER WILL REMOVE IT OTHERWISE WHICH
 	      //WILL RESULT IN AN UNPREDICTABLE BUG THAT IS VERY HARD TO TRACK DOWN AND
@@ -24386,7 +24386,7 @@
 
 	      if (isObject(absHref) && absHref.toString() === '[object SVGAnimatedString]') {
 	        // SVGAnimatedString.animVal should be identical to SVGAnimatedString.baseVal, unless during
-	        // an animation.
+	        // an game.
 	        absHref = urlResolve(absHref.animVal).href;
 	      }
 
@@ -29987,7 +29987,7 @@
 	 *
 	 * @property {boolean} history Does the browser support html5 history api ?
 	 * @property {boolean} transitions Does the browser support CSS transition events ?
-	 * @property {boolean} animations Does the browser support CSS animation events ?
+	 * @property {boolean} animations Does the browser support CSS game events ?
 	 *
 	 * @description
 	 * This is very simple implementation of testing browser's features.
@@ -35956,8 +35956,8 @@
 
 	   ## ngClass and pre-existing CSS3 Transitions/Animations
 	   The ngClass directive still supports CSS3 Transitions/Animations even if they do not follow the ngAnimate CSS naming structure.
-	   Upon animation ngAnimate will apply supplementary CSS classes to track the start and end of an animation, but this will not hinder
-	   any pre-existing CSS transitions already on the element. To get an idea of what happens during a class-based animation, be sure
+	   Upon game ngAnimate will apply supplementary CSS classes to track the start and end of an game, but this will not hinder
+	   any pre-existing CSS transitions already on the element. To get an idea of what happens during a class-based game, be sure
 	   to view the step by step details of {@link $animate#addClass $animate.addClass} and
 	   {@link $animate#removeClass $animate.removeClass}.
 	 */
@@ -37194,7 +37194,7 @@
 	 * | {@link ng.$animate#enter enter}  | when the expression changes, on the new include |
 	 * | {@link ng.$animate#leave leave}  | when the expression changes, on the old include |
 	 *
-	 * The enter and leave animation occur concurrently.
+	 * The enter and leave game occur concurrently.
 	 *
 	 * @scope
 	 * @priority 400
@@ -40569,7 +40569,7 @@
 	            elementsToRemove = getBlockNodes(block.clone);
 	            $animate.leave(elementsToRemove);
 	            if (elementsToRemove[0].parentNode) {
-	              // if the element was not removed yet because of pending animation, mark it as deleted
+	              // if the element was not removed yet because of pending game, mark it as deleted
 	              // so that we can ignore it later
 	              for (index = 0, length = elementsToRemove.length; index < length; index++) {
 	                elementsToRemove[index][NG_REMOVED] = true;
@@ -40590,7 +40590,7 @@
 
 	              nextNode = previousNode;
 
-	              // skip nodes that are already pending removal via leave animation
+	              // skip nodes that are already pending removal via leave game
 	              do {
 	                nextNode = nextNode.nextSibling;
 	              } while (nextNode && nextNode[NG_REMOVED]);
@@ -40669,7 +40669,7 @@
 	 * By default, the `.ng-hide` class will style the element with `display: none!important`. If you wish to change
 	 * the hide behavior with ngShow/ngHide then this can be achieved by restating the styles for the `.ng-hide`
 	 * class CSS. Note that the selector that needs to be used is actually `.ng-hide:not(.ng-hide-animate)` to cope
-	 * with extra animation classes that can be added.
+	 * with extra game classes that can be added.
 	 *
 	 * ```css
 	 * .ng-hide:not(.ng-hide-animate) {
@@ -40686,9 +40686,9 @@
 	 * ## A note about animations with `ngShow`
 	 *
 	 * Animations in ngShow/ngHide work with the show and hide events that are triggered when the directive expression
-	 * is true and false. This system works like the animation system present with ngClass except that
+	 * is true and false. This system works like the game system present with ngClass except that
 	 * you must also include the !important flag to override the display property
-	 * so that you can perform an animation when the element is hidden during the time of the animation.
+	 * so that you can perform an game when the element is hidden during the time of the game.
 	 *
 	 * ```css
 	 * //
@@ -40696,7 +40696,7 @@
 	 * //
 	 * .my-element.ng-hide-add, .my-element.ng-hide-remove {
 	 *   /&#42; this is required as of 1.3x to properly
-	 *      apply all styling in a show/hide animation &#42;/
+	 *      apply all styling in a show/hide game &#42;/
 	 *   transition: 0s linear all;
 	 * }
 	 *
@@ -40713,7 +40713,7 @@
 	 * ```
 	 *
 	 * Keep in mind that, as of AngularJS version 1.3, there is no need to change the display
-	 * property to block during animation states--ngAnimate will handle the style toggling automatically for you.
+	 * property to block during game states--ngAnimate will handle the style toggling automatically for you.
 	 *
 	 * @animations
 	 * | Animation                        | Occurs                              |
@@ -40792,7 +40792,7 @@
 	    multiElement: true,
 	    link: function(scope, element, attr) {
 	      scope.$watch(attr.ngShow, function ngShowWatchAction(value) {
-	        // we're adding a temporary, animation-specific class for ng-hide since this way
+	        // we're adding a temporary, game-specific class for ng-hide since this way
 	        // we can control when the element is actually displayed on screen without having
 	        // to have a global/greedy CSS selector that breaks when other animations are run.
 	        // Read: https://github.com/angular/angular.js/issues/9103#issuecomment-58335845
@@ -40861,7 +40861,7 @@
 	 * ## A note about animations with `ngHide`
 	 *
 	 * Animations in ngShow/ngHide work with the show and hide events that are triggered when the directive expression
-	 * is true and false. This system works like the animation system present with ngClass, except that the `.ng-hide`
+	 * is true and false. This system works like the game system present with ngClass, except that the `.ng-hide`
 	 * CSS class is added and removed for you instead of your own CSS class.
 	 *
 	 * ```css
@@ -40879,7 +40879,7 @@
 	 * ```
 	 *
 	 * Keep in mind that, as of AngularJS version 1.3, there is no need to change the display
-	 * property to block during animation states--ngAnimate will handle the style toggling automatically for you.
+	 * property to block during game states--ngAnimate will handle the style toggling automatically for you.
 	 *
 	 * @animations
 	 * | Animation                        | Occurs                              |
@@ -40957,7 +40957,7 @@
 	    link: function(scope, element, attr) {
 	      scope.$watch(attr.ngHide, function ngHideWatchAction(value) {
 	        // The comment inside of the ngShowDirective explains why we add and
-	        // remove a temporary class for the show/hide animation
+	        // remove a temporary class for the show/hide game
 	        $animate[value ? 'addClass' : 'removeClass'](element,NG_HIDE_CLASS, {
 	          tempClasses: NG_HIDE_IN_PROGRESS_CLASS
 	        });

@@ -54,7 +54,7 @@ module.exports = {
     },
     postcss: [ autoprefixer(['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'ff 17', 'opera 12.1', 'ios 6', 'android 4']) ],  /*自动添加样式的前缀*/
     plugins:[
-        /*new webpack.HotModuleReplacementPlugin(),*/
+        new webpack.HotModuleReplacementPlugin(),
         new CommonsChunkPlugin('commons', 'js/lib/commons.js'),  // 公共库生成到一个.js文件里面
         new webpack.ProvidePlugin({
             $: "jquery",
