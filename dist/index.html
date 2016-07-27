@@ -1,23 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>My Blog</title>
-<link rel="shortcut icon" href="favicon.ico"><link href="css/index.css?34eb917f4ae5ed48e406" rel="stylesheet"></head>
-<body ng-app="routerApp">
-    <div class="imgContainer"></div>
-    <div class="navContainer">
-        <nav class="nav">
-            <a href="#/main"> 首页</a>
-            <a href="#/a">a</a>
-            <a ui-sref="b">b</a>
-        </nav>
-    </div>
+    <!-- CSS (load bootstrap) -->
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
+   <!-- <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="enter.js"></script>-->
+<link rel="shortcut icon" href="favicon.ico"><link href="css/index.css?b23c2cfa3bf88536b6e6" rel="stylesheet"></head>
 
-    <div class="content">
-        <div >
-            <div ui-view></div>
+<!-- apply our angular app to our site -->
+<body ng-app="routerApp">
+    <div class="navContainer">
+        <div class="headerContainer">
+            <img class="imageClass" src="images/proBar.jpeg">
+            <!-- NAVIGATION -->
+            <nav class="navClass">
+                <ul>
+                    <li><a ui-sref="home"> Ming</a></li>
+                    <li><a ui-sref="about">method</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
-<script type="text/javascript" src="js/lib/commons.js?34eb917f4ae5ed48e406"></script><script type="text/javascript" src="js/build.js?34eb917f4ae5ed48e406"></script></body>
+
+    <div class="contentContainer">
+        <div ui-view> </div>
+    </div>
+
+<script type="text/javascript" src="js/lib/commons.js?b23c2cfa3bf88536b6e6"></script><script type="text/javascript" src="js/build.js?b23c2cfa3bf88536b6e6"></script></body>
 </html>

@@ -1,65 +1,62 @@
-html,body{
+html{
     margin: 0;
     padding:0;
+    height: 100%;
+    width: 100%;
 }
 
-.imgContainer{
-    background-image: url("../image/proBar.jpeg");
-    background-repeat: no-repeat;
-    background-size: 200px 100px;
-    color: red;
-    height: 100px;
+body{
+    margin: 0;
+    padding:0;
     width: 100%;
-/*    filter:alpha(opacity=10);
-    -moz-opacity:0.1;
-    -khtml-opacity: 0.1;
-    opacity: 0.1;*/
+}
+.imageClass{
+    height: 50px;
+    vertical-align: middle;
 }
 
 /*导航栏样式*/
 .navContainer{
-    width: 100%;
-    height: 40px;
-    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px #ccc;
 }
 
-.nav{
-    margin:auto;
+.headerContainer{
     width: 980px;
-    position: relative;
-    height: 100%;
+    margin: auto;
 }
 
-.nav a{
-    text-decoration: none;
+.navClass{
     display: inline-block;
-    padding-top: 8px;
-    margin: 0 8px;
-    color: black;
-}
-a:link {
-    color: red;
 }
 
-/* visited link */
-a:visited {
-    color: #343d46;
+.navClass ul{
+    padding: 0;
+    margin: 0;
 }
 
-/* mouse over link */
-a:hover {
-    color: hotpink;
+.navClass li{
+    list-style: none;
+    display: inline-block;
+    padding: 0 5px;
+    margin: 0 5px;
 }
 
-/* selected link */
-a:active {
-    color: blue;
+.navClass a{
+    text-decoration: none;
 }
-
 /*内容的样式*/
+.contentContainer{
+    background-image: url("../image/shadow_light.png");
+    background-repeat: repeat;
+    width: 1000px;
+    margin: auto;
+}
 .content{
     width: 980px;
     margin: auto;
     height: 200px;
     background-color: red;
 }
+
+
+
