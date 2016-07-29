@@ -1,12 +1,12 @@
 require('./css/index.css');
-require('./views/home.html');
 
 var routerApp = angular.module('routerApp', ['ui.router',require('oclazyload')]);
 routerApp.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+   //其他的界面 跳转到首页
+    $urlRouterProvider.otherwise('/index/d3');
 
     $stateProvider
-        // HOME STATES AND NESTED VIEWS ========================================
+        // 首页 ========================================
         .state('index', {
             url: '/index',
             /*template: 'I could sure use a drink right now.'*/
@@ -19,6 +19,7 @@ routerApp.config(['$stateProvider', '$urlRouterProvider',function($stateProvider
                 return deferred.promise;
             },
             controller: 'SkillController', //控制器名称 可以使用controller As ** 语法
+            //js 文件
             resolve: {
                 'app.main': function($q, $ocLazyLoad) {
                     var deferred = $q.defer();
@@ -34,7 +35,35 @@ routerApp.config(['$stateProvider', '$urlRouterProvider',function($stateProvider
             }
         })
 
-        // nested list with custom controller
+        // 首页的子页面
+        .state('index.d3',{
+            url: '/:d3',
+            templateProvider: function($q) {
+                var deferred = $q.defer();
+                require.ensure(['./views/skillChildHtml/d3/d3.html'], function(require) {
+                    var template = require('./views/skillChildHtml/d3/d3.html');
+                    deferred.resolve(template);
+                }, 'd3-tpl');
+                return deferred.promise;
+            },
+            controller: 'D3Controller', //控制器名称 可以使用controller As ** 语法
+            //js 文件
+            resolve: {
+                'app.main': function($q, $ocLazyLoad) {
+                    var deferred = $q.defer();
+                    require.ensure(['./views/skillChildHtml/d3/d3'], function() {
+                        var mod = require('./views/skillChildHtml/d3/d3');       //要异步加载的模块 (视图模块)
+                        $ocLazyLoad.load({
+                            name: 'app.d3' //模块名称
+                        });
+                        deferred.resolve(mod.controller); //输出控制器
+                    }, 'd3-ctl');
+                    return deferred.promise;
+                }
+            }
+        })
+
+        // cocos2d 页面
         .state('game', {
             url: '/game',
             /*template: 'I could sure use a drink right now.'*/
@@ -61,7 +90,7 @@ routerApp.config(['$stateProvider', '$urlRouterProvider',function($stateProvider
                 }
             }
         })
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+        // 那些年 ======
         .state('thatYears', {
             url: '/thatYears',
             /*template: 'I could sure use a drink right now.'*/

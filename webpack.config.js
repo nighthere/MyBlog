@@ -1,5 +1,5 @@
 /**
- * Created by ÓÀÒ¹ on 2016/7/23.
+ * Created by ï¿½ï¿½Ò¹ on 2016/7/23.
  */
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -50,12 +50,12 @@ module.exports = {
         ]
     },
     resolve: {
-        extension: ['', '.js']  /*×Ô¶¯À©Õ¹ºó×ºÃû*/
+        extension: ['', '.js']  /*ï¿½Ô¶ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½×ºï¿½ï¿½*/
     },
-    postcss: [ autoprefixer(['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'ff 17', 'opera 12.1', 'ios 6', 'android 4']) ],  /*×Ô¶¯Ìí¼ÓÑùÊ½µÄÇ°×º*/
+    postcss: [ autoprefixer(['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'ff 17', 'opera 12.1', 'ios 6', 'android 4']) ],  /*ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ç°×º*/
     plugins:[
         new webpack.HotModuleReplacementPlugin(),
-        new CommonsChunkPlugin('commons', 'js/lib/commons.js'),  // ¹«¹²¿âÉú³Éµ½Ò»¸ö.jsÎÄ¼þÀïÃæ
+        new CommonsChunkPlugin('commons', 'js/lib/commons.js'),  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½Ò»ï¿½ï¿½.jsï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",

@@ -1,0 +1,24 @@
+/*页面导航的样式*/
+.menu{
+    float: left;
+    width: 180px;
+    margin-right: 20px;
+    box-shadow: 2px 2px 2px #ccc;
+    background-color: white;
+}
+
+.menu ul{
+    list-style: none;
+    padding: 20px 0;
+}
+
+.menu ul li:first-child{
+    border-top: 1px solid #ccc;
+}
+
+/*页面内容的样式*/
+.indexHome{
+    float: left;
+    width: 780px;
+    background-color: #004444;
+}

@@ -15,7 +15,7 @@ body{
     vertical-align: middle;
 }
 
-/*µ¼º½À¸ÑùÊ½*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
 .navContainer{
     box-shadow: 0 2px 5px #ccc;
 }
@@ -44,18 +44,18 @@ body{
 .navClass a{
     text-decoration: none;
 }
-/*ÄÚÈİµÄÑùÊ½*/
+/*æ€»ä½“å¸ƒå±€çš„æ ·å¼Ê½*/
 .contentContainer{
     background-image: url("../image/shadow_light.png");
     background-repeat: repeat;
     width: 1000px;
     margin: auto;
+    margin-top: 20px;
 }
 .content{
     width: 980px;
     margin: auto;
     height: 200px;
-    background-color: red;
 }
 
 

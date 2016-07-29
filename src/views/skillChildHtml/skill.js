@@ -1,9 +1,9 @@
 /**
- * Created by ÓÀÒ¹ on 2016/7/27.
+ * Created by ï¿½ï¿½Ò¹ on 2016/7/27.
  */
 require("./skill.css");
 
 module.exports = angular.module("app.skill",[])
     .controller("SkillController",function($scope){
 
-    })
+    });
